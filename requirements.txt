@@ -1,2 +1,5 @@
 # GeoNode
 -e git+https://github.com/GeoNode/geonode.git@master#egg=geonode
+
+django-environ
+pathlib2
