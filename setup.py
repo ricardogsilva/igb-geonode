@@ -29,9 +29,9 @@ from distutils.core import setup
 
 from setuptools import find_packages
 
-# Parse requirements.txt to get the list of dependencies
-inst_req = parse_requirements('requirements.txt',
-                              session=PipSession())
+# Parse production.txt to get the list of dependencies
+inst_req = parse_requirements(
+    'requirements/production.txt', session=PipSession())
 REQUIREMENTS = [str(r.req) for r in inst_req]
 
 def read(*rnames):

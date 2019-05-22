@@ -27,7 +27,7 @@ RUN chmod +x /usr/bin/wait-for-databases
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# To understand the next section (the need for requirements.txt and setup.py)
+# To understand the next section (the need for production.txt and setup.py)
 # Please read: https://packaging.python.org/requirements/
 
 # python-gdal does not seem to work, let's install manually the version that is
@@ -47,7 +47,7 @@ RUN chmod +x /usr/src/igb/tasks.py \
     && chmod +x /usr/src/igb/entrypoint.sh
 
 # app-specific requirements
-RUN pip install --upgrade --no-cache-dir --src /usr/src -r requirements.txt
+RUN pip install --upgrade --no-cache-dir --src /usr/src -r requirements/production.txt
 RUN pip install --upgrade -e .
 
 ENTRYPOINT ["/usr/src/igb/entrypoint.sh"]
