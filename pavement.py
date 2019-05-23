@@ -576,8 +576,29 @@ def start_django():
         settings = 'DJANGO_SETTINGS_MODULE=%s' % settings
     bind = options.get('bind', '0.0.0.0:8000')
     foreground = '' if options.get('foreground', False) else '&'
-    sh('%s python -W ignore manage.py runserver %s %s' % (settings, bind, foreground))
-
+    cert_path = os.getenv("DJANGO_RUNSSLSERVER_CERT")
+    cert_key_path = os.getenv("DJANGO_RUNSSLSERVER_CERT_KEY")
+    if all((cert_path, cert_key_path)):
+        django_server_command = "runsslserver"
+        https_stuff = [
+            "--certificate", os.getenv("DJANGO_RUNSSLSERVER_CERT"),
+            "--key", os.getenv("DJANGO_RUNSSLSERVER_CERT_KEY"),
+        ]
+    else:
+        info("Running django without HTTPS")
+        django_server_command = "runserver"
+        https_stuff = []
+    cmd = [
+        settings,
+        "python",
+        "-W", "ignore",
+        "manage.py",
+        django_server_command,
+        bind
+    ] + https_stuff + [
+        foreground
+    ]
+    sh(" ".join(cmd))
     celery_queues = [
         "default",
         "geonode",

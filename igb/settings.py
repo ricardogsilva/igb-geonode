@@ -88,3 +88,14 @@ UNOCONV_ENABLE = env("UNOCONV_ENABLE", cast=bool, default=True)
 if UNOCONV_ENABLE:
     UNOCONV_EXECUTABLE = env("UNOCONV_EXECUTABLE", default="/usr/bin/unoconv")
     UNOCONV_TIMEOUT = env("UNOCONV_TIMEOUT", cast=int, default=30)  # seconds
+
+INSTALLED_APPS += (
+   'allauth.socialaccount.providers.linkedin_oauth2',
+   'allauth.socialaccount.providers.facebook',
+)
+
+if DEBUG:
+    INSTALLED_APPS += (
+        "sslserver",
+    )
+
