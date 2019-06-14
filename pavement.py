@@ -488,6 +488,7 @@ def stop_django():
     """
     kill('python', 'celery')
     kill('python', 'runserver')
+    kill('python', 'runsslserver')
     kill('python', 'runmessaging')
 
 

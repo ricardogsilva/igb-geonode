@@ -1,5 +1,5 @@
 # GeoNode
 -e git+https://github.com/GeoNode/geonode.git@master#egg=geonode
 
-django-environ
-pathlib2
+django-environ==0.4.5
+pathlib2==2.3.3
