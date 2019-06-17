@@ -37,6 +37,9 @@ env = environ.Env(
 # It is used for relative settings elsewhere.
 LOCAL_ROOT = str(Path(__file__).resolve().parent)
 
+STATIC_ROOT = "{}/static_root".format(Path(LOCAL_ROOT).parent)
+MEDIA_ROOT = "{}/uploaded".format(Path(LOCAL_ROOT).parent)
+
 PROJECT_NAME = "igb"
 
 DEBUG = env("DEBUG")
