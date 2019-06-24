@@ -180,7 +180,7 @@ GEONODE_LDAP_GROUP_NAME_ATTRIBUTE = env(
 GEONODE_LDAP_GROUP_PROFILE_FILTERSTR = env("LDAP_GROUP_PROFILE_FILTERSTR")
 GEONODE_LDAP_GROUP_CATEGORY_FILTERSTR = env("LDAP_GROUP_CATEGORY_FILTERSTR")
 
-CELERY_TASK_ALWAYS_EAGER = False  # use an async queue
+CELERY_TASK_ALWAYS_EAGER = True  # do not use an async queue
 
 # The below code is a workaround for not being able to run tests, apparently
 # due to some migration conflict. If the IGRATION_MODULES environment variable
