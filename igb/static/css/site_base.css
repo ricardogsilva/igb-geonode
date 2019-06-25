@@ -6899,7 +6899,7 @@ form input {
 #wrap {
   background: #fff;
   padding-bottom: 40px;
-  padding-top: 10px;
+  padding-top: 40px;
   width: 100%;
 }
 article.tab-pane {
@@ -6991,7 +6991,7 @@ article.tab-pane {
   margin-left: 10px;
 }
 .navbar-brand {
-  background: url(../img/igb_logo.png);
+  background: url(../img/igb_logo_bw.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -7013,7 +7013,26 @@ article.tab-pane {
 /* ------ Home
 ------------------------------ */
 .home .navbar-inverse {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+}
+.home .navbar-inverse .navbar-nav > li > a {
+  color: black;
+  font-weight: 600;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.home .navbar-inverse .navbar-nav > li > a:hover {
+  color: white;
+  background-color: #005ea8;
+}
+.home .navbar-brand {
+  background: url(../img/igb_logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 145px;
+  height: 76px;
+  margin: 20px;
 }
 .home #wrap {
   margin-top: -60px;
@@ -7024,8 +7043,12 @@ article.tab-pane {
 }
 .home .jumbotron {
   position: relative;
-  background: #91b937;
-  color: #005ea8;
+  background-image: url(../img/karsten-wurth-56pecHNfqIs-unsplash-edited.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  min-height: 600px;
   margin-bottom: 0;
   padding: 7.5em 0 3.75em;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
@@ -7048,15 +7071,15 @@ article.tab-pane {
   background: rgba(0, 0, 0, 0.4);
 }
 .home .big-search {
-  background: #005ea8;
+  background: white;
   color: white;
-  padding-bottom: 3em;
-  padding-top: 1em;
+  padding-bottom: 0.2em;
+  padding-top: 0.2em;
 }
 .home .big-search h1,
 .home .big-search p {
   text-align: center;
-  color: #91b937;
+  color: #333333;
 }
 .home .big-search a {
   color: #91b937;
@@ -7089,18 +7112,21 @@ article.tab-pane {
 .home .big-search .btn-default {
   background: transparent;
   border: none;
-  color: #ff8f31;
+  color: white;
 }
 .home .big-search .btn-default:hover {
   text-decoration: underline;
 }
 .home #datasets {
-  /*background: @brand-primary;
-    color: white;*/
+  background: #91b937;
+  color: white;
   padding: 1em 0;
 }
 .home #datasets p {
   font-size: 12px;
+}
+.home #datasets h1 {
+  color: #333333;
 }
 .home #datasets h4 {
   text-transform: uppercase;
@@ -7119,7 +7145,7 @@ article.tab-pane {
   padding: 2em 0;
 }
 .home #datasets a .category:hover {
-  color: #91b937;
+  color: #005ea8;
 }
 .home #datasets a span {
   font-size: 4em;
@@ -7366,6 +7392,9 @@ article.tab-pane {
 }
 .map-actions i {
   padding-right: 3px;
+}
+#ms-container {
+  top: 115px;
 }
 /* Documents
 ----------------------- */
@@ -7662,6 +7691,7 @@ nav.filter li a {
 /* Footer
 ----------------------- */
 footer {
+  background-color: #333333;
   color: white;
   padding: 1.5em;
 }

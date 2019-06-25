@@ -4,7 +4,7 @@
 {% load base_tags %}
 
 {% block header %}
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -149,8 +149,6 @@ This is where you can override the hero area block. You can simply modify the co
 <div class="jumbotron">
   <div class="container">
       <h1>{{custom_theme.jumbotron_welcome_title|default:_("IGB-GeoNode")}}</h1>
-      <p></p>
-      <p>{{custom_theme.jumbotron_welcome_content|default:_("This is the custom GeoNode install for IGB")}}</p>
   </div>
 </div>
 {% endblock hero %}
