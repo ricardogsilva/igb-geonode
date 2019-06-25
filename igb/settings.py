@@ -74,27 +74,20 @@ CACHES = {
 
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
 
-SITEURL = env("DJANGO_SITEURL")
-# Changing the `SITEURL` variable has lots of side effects, so we need to
-# adjust them too
-LOGIN_URL = "{}account/login/".format(SITEURL)
-LOGOUT_URL = "{}account/logout/".format(SITEURL)
-ACCOUNT_LOGIN_REDIRECT_URL = SITEURL
-ACCOUNT_LOGOUT_REDIRECT_URL = SITEURL
-CATALOGUE["default"]["URL"] = urljoin(SITEURL, "catalogue/csw")
-PYCSW["CONFIGURATION"]["metadata:main"]["provider_url"] = SITEURL
-if USE_GEOSERVER:
-    PUBLIC_GEOSERVER["source"]["attribution"] = "&copy; {}".format(SITEURL)
-    LOCAL_GEOSERVER["source"]["attribution"] = "&copy; {}".format(SITEURL)
-
 UPLOADER["BACKEND"] = "geonode.importer"
 
 SITENAME = env("DJANGO_SITENAME", default="igb")
 
 WSGI_APPLICATION = "{}.wsgi.application".format(PROJECT_NAME)
 
-LANGUAGE_CODE = env("LANGUAGE_CODE", default="en")
+LANGUAGE_CODE = env("LANGUAGE_CODE", default="de")
+LANGUAGES = (
+    ("de", "Deutsch"),
+    ("en", "English"),
+)
 
+SOCIAL_ORIGINS = [
+    i for i in SOCIAL_ORIGINS if "plus.google.com" not in i["url"]]
 
 if PROJECT_NAME not in INSTALLED_APPS:
     INSTALLED_APPS += (PROJECT_NAME,)
@@ -204,4 +197,3 @@ MIGRATION_MODULES = (
     MigrationDisabler() if env("MIGRATION_MODULES", default="").lower() == "none" else
     env("MIGRATION_MODULES", default="") or {}
 )
-
