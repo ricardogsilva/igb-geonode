@@ -24,12 +24,15 @@ class Command(BaseCommand):
             backend.settings.BIND_DN,
             backend.settings.BIND_PASSWORD
         )
-        updated_categories = self.update_categories(
-            conn,
-            base_dn=backend.settings.GROUP_SEARCH.base_dn,
-            filterstr=settings.GEONODE_LDAP_GROUP_CATEGORY_FILTERSTR,
-            category_name_attribute=settings.GEONODE_LDAP_GROUP_NAME_ATTRIBUTE
-        )
+        if getattr(settings, "GEONODE_LDAP_GROUP_CATEGORY_FILTERSTR", None):
+            updated_categories = self.update_categories(
+                conn,
+                base_dn=backend.settings.GROUP_SEARCH.base_dn,
+                filterstr=settings.GEONODE_LDAP_GROUP_CATEGORY_FILTERSTR,
+                category_name_attribute=settings.GEONODE_LDAP_GROUP_NAME_ATTRIBUTE
+            )
+        else:
+            updated_categories = None
         updated_groups = self.update_groups(
             conn,
             base_dn=backend.settings.GROUP_SEARCH.base_dn,
@@ -77,7 +80,7 @@ class Command(BaseCommand):
             base_dn,
             filterstr,
             group_name_attribute,
-            category_memberships
+            category_memberships=None
     ):
         """Sync geonode groups with information on the LDAP server"""
 
@@ -109,7 +112,7 @@ class Command(BaseCommand):
                     "Created new group {!r}, now handling category "
                     "memberships...".format(truncated_name)
                 )
-            for group_category, members in category_memberships:
+            for group_category, members in category_memberships or []:
                 if cn in members:
                     group.categories.add(group_category)
                     group.save()
