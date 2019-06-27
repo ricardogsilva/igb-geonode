@@ -139,6 +139,8 @@ LOGGING["loggers"].update({
     }
 })
 
+EMAIL_USE_SSL = env("DJANGO_EMAIL_USE_SSL", cast=bool, default=False)
+
 if DEBUG:
     INSTALLED_APPS += (
         "sslserver",
